@@ -33,6 +33,9 @@
         <li class="nav-item">
           <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.index') }}">Cari</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('login.index') }}">Login</a>
+        </li>
         
     </ul>
   </div>

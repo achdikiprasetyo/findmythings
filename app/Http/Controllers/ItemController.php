@@ -64,8 +64,6 @@ class ItemController extends Controller
     
     public function update(Request $request, string $id)
     {   
-
-
             $validatedData = $request->validate([
                 'nama_barang' => 'required',
                 'kategori' => 'required',
