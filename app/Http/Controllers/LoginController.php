@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -13,11 +13,14 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function login(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
+        ], [
+            'email.required' => 'Email harus di isi',
+            'password.required' => 'Password harus di isi',
         ]);
 
         if ($validator->fails()) {
@@ -29,20 +32,23 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect('/items')->with('success','Login Berhasil');
+        } else {
+            return redirect('/login')
+                ->withErrors([
+                    'message' => 'Email atau password salah',
+                ])
+                ->withInput();
         }
-
-        return redirect('/login')
-            ->withErrors([
-                'message' => 'Email or password is incorrect',
-            ])
-            ->withInput();
     }
+
+
 
     public function logout(Request $request)
-    {
+{
         Auth::logout();
+        return redirect('/login')->with('success','Anda Telah Logout');
+}
 
-        return redirect('/');
-    }
+
 }

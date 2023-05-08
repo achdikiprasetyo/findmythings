@@ -20,26 +20,39 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
-  <a class="navbar-brand" href="/">Find My Things</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="navbarNav">
-    <ul class=" navbar-nav ms-auto">
-    <li class="nav-item">
-          <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('items.create') }}">Posting</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.index') }}">Cari</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('login.index') }}">Login</a>
-        </li>
-        
-    </ul>
-  </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <a class="navbar-brand" href="/">Find My Things</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        @guest
+          <li class="nav-item">
+            <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('login') }}">Login</a>
+          </li>
+        @endguest
+        @auth
+          <li class="nav-item">
+            <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('items.create') }}">Posting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.index') }}">Cari</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.userPost') }}">Postinganku</a>
+          </li>
+          <li class="nav-item">
+            <form method="GET" action="{{ route('login.logout') }}">
+              @csrf
+              <button type="submit" class="nav-link link-opacity-50-hover link-dark" style="background-color:transparent; border:none; cursor:pointer;" href="{{ route('login.logout') }}">Logout</button>
+            </form>
+          </li>
+        @endauth
+      </ul>
+    </div>
+  </nav>
+  
 
 <div class="container min-vh-100 mt-5">
     @yield('container')

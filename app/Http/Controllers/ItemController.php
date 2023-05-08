@@ -48,11 +48,28 @@ class ItemController extends Controller
      */
     public function show(string $id)
     {
-        //
         $item= DB::table('items')->find($id);
         return view('items.detail',['item'=>$item]);
     }
+    
+    
+  /**    public function userPosts()
+  *  {
+   *     $user = auth()->user();
+    *    if (!$user) {
+     *       return redirect('/login');
+      *  }
+    *
+     *   $posts = Item::where('user_id', $user->id)->get();
+      *  return view('userPosts', compact('posts'));
+    *}
+*/
 
+    public function __construct()
+    {
+        $this->middleware('auth')->only('show','edit','store','create','userPost');
+    }
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -95,6 +112,8 @@ class ItemController extends Controller
             $item->lokasi = $validatedData['lokasi'];
             $item->kontak = $validatedData['kontak'];
             $item->tanggal = $validatedData['tanggal'];
+            //$item->user_id = auth()->user()->id; // menyimpan user ID
+
             $item->save();
         
             return redirect()->route('items.index')->with('success', 'Barang berhasil diupdate.');

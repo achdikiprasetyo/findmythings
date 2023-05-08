@@ -1,5 +1,11 @@
 @extends('layouts.main')
 @section('container')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <h3 class="text-center fw-bold mb-5">LIST BARANG </h3>
     <div class="container d-flex">
         <div class="row justify-content-around g-2">
