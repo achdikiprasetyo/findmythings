@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,23 +19,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/items',ItemController::class);
+Route::resource('/barang',BarangController::class);
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/items/{id}/edit', [ItemController::class, 'edit'])->name('items.edit');
-    Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
-    Route::delete('/items/{id}', [ItemController::class, 'destroy'])->name('items.destroy');
-    Route::get('/items/{id}', [ItemController::class, 'show'])->name('items.show');
-    Route::get('/items/user', [ItemController::class, 'userPost'])->name('items.userPost');
-
-    
+    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
+    Route::get('/barang/user', [BarangController::class, 'userPost'])->name('barang.userPost');
 });
 
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/items/user', [ItemController::class, 'userPost'])->name('items.userPost');
+    Route::get('/barang/user', [BarangController::class, 'userPost'])->name('barang.userPost');
 });
 
 

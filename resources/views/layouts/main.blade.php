@@ -34,13 +34,13 @@
         @endguest
         @auth
           <li class="nav-item">
-            <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('items.create') }}">Posting</a>
+            <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('barang.create') }}">Posting</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.index') }}">Cari</a>
+            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('barang.index') }}">Cari</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('items.userPost') }}">Postinganku</a>
+            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('barang.userPost') }}">Postinganku</a>
           </li>
           <li class="nav-item">
             <form method="GET" action="{{ route('login.logout') }}">

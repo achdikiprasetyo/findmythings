@@ -32,7 +32,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/items')->with('success','Login Berhasil');
+            return redirect('/barang')->with('success','Login Berhasil');
         } else {
             return redirect('/login')
                 ->withErrors([

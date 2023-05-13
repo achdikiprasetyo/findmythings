@@ -12,10 +12,10 @@
                   <p class="col-md-8 fs-4 my-4">Software Aplikasi Web Penemuan dan Pencarian Barang Hilang</p>
                   <div class="d-flex justify-content-between col-4">
                     {{-- <div class="col-3"> --}}
-                        <a href="{{ route('items.index') }}" class="btn btn-primary btn-md my-5 mr-3">Cari Barang</a>
+                        <a href="{{ route('barang.index') }}" class="btn btn-primary btn-md my-5 mr-3">Cari Barang</a>
                     {{-- </div>
                     <div class="col-3"> --}}
-                        <a href="{{ route('items.create') }}" class="btn btn-primary btn-md my-5">Posting Barang</a>
+                        <a href="{{ route('barang.create') }}" class="btn btn-primary btn-md my-5">Posting Barang</a>
                     {{-- </div> --}}
                     
                   </div>
