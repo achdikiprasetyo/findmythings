@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="col-lg">
                                 <label for="tangal" class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" name="tanggal" id="tangal" placeholder="Tanggal">
+                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
                             </div>
                             <div class="col-lg">
                                 <label for="lokasi" class="form-label">Lokasi</label>
