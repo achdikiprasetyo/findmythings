@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <img src="{{ asset('storage/gambar/'.$barang->gambar) }}" alt="" class="img-fluid">
+                <img src="{{ asset('storage/gambar/' . $barang->gambar) }}" alt="" class="img-fluid">
             </div>
             <div class="col-lg">
                 <div class="p-5 h-100 bg-body-tertiary rounded-3">
@@ -21,11 +21,19 @@
                         <h1 class="display-5 fw-bold">{{ $barang->nama_barang }}</h1>
                         <div class="row my-2"></div>
                         <span class="badge text-bg-primary mb-3">{{ $barang->kategori }}</span>
-                        <span class="badge text-bg-{{ ($barang->status=='Dikembalikan') ? 'success' : 'warning' }} mb-3">{{ $barang->status }}</span>
+                        <span
+                            class="badge text-bg-{{ $barang->status == 'Dikembalikan' ? 'success' : 'warning' }} mb-3">{{ $barang->status }}</span>
                         <div class="row my-2">
-                            <div class="col-lg-3"><p>{{ $barang->tanggal }}</p></div>
-                            <div class="col-lg-3"><p>{{ $barang->lokasi }}</p></div>
+                            <div class="col-lg-3">
+                                <p>{{ $barang->tanggal }}</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <p>{{ $barang->lokasi }}</p>
+                            </div>
                         </div>
+                        <p class="col-md-12 fs-5 my-3">{{ $barang->deskripsi }}</p>
+                        <h5 class="mt-4">Kontak</h5>
+                        <p>{{ $barang->kontak }}</p>
                     </div>
                 </div>
             </div>
