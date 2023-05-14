@@ -44,10 +44,10 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_barang)
     {
-        $item= DB::table('barang')->find($id);
-        return view('barang.detail',['item'=>$item]);
+        $barang= Barang::find($id_barang);
+        return view('barang.detail',['barang'=>$barang]);
     }
     
     
@@ -73,8 +73,8 @@ class BarangController extends Controller
      */
     public function edit(string $id)
     {
-        $item = Barang::find($id);
-        return view('barang.edit', ['item' => $item]);
+        $barang = Barang::find($id);
+        return view('barang.edit', ['barang' => $barang]);
     }
     
     public function update(Request $request, string $id)
@@ -89,30 +89,30 @@ class BarangController extends Controller
                 'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
         
-            $item = Barang::find($id);
+            $barang = Barang::find($id);
         
             // Update gambar jika ada gambar baru yang diupload
             if ($request->hasFile('gambar')) {
                 // Hapus gambar lama jika ada
-                if ($item->gambar != null) {
-                    Storage::delete('gambar/' . $item->gambar);
+                if ($barang->gambar != null) {
+                    Storage::delete('gambar/' . $barang->gambar);
                 }
                 // Simpan gambar baru
                 $namaGambar = uniqid() . '.' . $request->file('gambar')->extension();
                 $request->file('gambar')->storeAs('gambar', $namaGambar);
-                $item->gambar = $namaGambar;
+                $barang->gambar = $namaGambar;
             }
         
             // Update data barang
-            $item->nama_barang = $validatedData['nama_barang'];
-            $item->kategori = $validatedData['kategori'];
-            $item->deskripsi = $validatedData['deskripsi'];
-            $item->lokasi = $validatedData['lokasi'];
-            $item->kontak = $validatedData['kontak'];
-            $item->tanggal = $validatedData['tanggal'];
-            //$item->user_id = auth()->user()->id; // menyimpan user ID
+            $barang->nama_barang = $validatedData['nama_barang'];
+            $barang->kategori = $validatedData['kategori'];
+            $barang->deskripsi = $validatedData['deskripsi'];
+            $barang->lokasi = $validatedData['lokasi'];
+            $barang->kontak = $validatedData['kontak'];
+            $barang->tanggal = $validatedData['tanggal'];
+            //$barang->user_id = auth()->user()->id; // menyimpan user ID
 
-            $item->save();
+            $barang->save();
         
             return redirect()->route('barang.index')->with('success', 'Barang berhasil diupdate.');
         }
@@ -128,10 +128,10 @@ class BarangController extends Controller
     {
         //
         
-        $item= DB::table('barang')->find($id);
-        $delete = DB::table('barang')->where('id','=',$id)->delete();
+        $barang= Barang::find($id);
+        $delete = DB::table('barang')->where('id_barang','=',$id)->delete();
         $delete;
-        Storage::delete('gambar/'.$item->gambar);
+        Storage::delete('gambar/'.$barang->gambar);
         return redirect()->route('barang.index')->with('success','Barang Berhasil dihapus.');
     }
 }

@@ -8,7 +8,7 @@
             <h1 class="fw-bold text-center">EDIT POSTINGAN</h1>
         </div>
         <div class="col">
-        <form action="{{ route('barang.update', $barang->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('barang.update', $barang->id_barang) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')

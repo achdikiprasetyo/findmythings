@@ -2,13 +2,13 @@
 
 @section('container')
     @if ($barang)
-        <form action="{{ route('barang.destroy', $barang->id, $barang->gambar) }}" method="post">
+        <form action="{{ route('barang.destroy', $barang->id_barang, $barang->gambar) }}" method="post">
             <a href="{{ route('barang.index') }}" class="btn btn-light mb-5">Kembali</a>
             @csrf
             @method('DELETE')
             {{-- <input type="hidden" name="gambar" value="{{ $barang->gambar }}"> --}}
             <button type="submit" class="btn btn-danger mb-3 float-end">Hapus</button>
-            <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-primary mb-3 float-end mx-2">Edit</a>
+            <a href="{{ route('barang.edit', $barang->id_barang) }}" class="btn btn-primary mb-3 float-end mx-2">Edit</a>
         </form>
 
         <div class="row">

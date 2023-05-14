@@ -64,9 +64,9 @@
                     
                     <!-- Submit button -->
                     {{-- <a href="{{ route('login.create') }}"></a> --}}
-                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                    {{-- <button type="submit" class="btn btn-primary btn-block mb-4">
                         Register
-                    </button>
+                    </button> --}}
                     
                 </div>
             </form>
