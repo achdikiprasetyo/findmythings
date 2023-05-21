@@ -50,18 +50,6 @@ class BarangController extends Controller
         return view('barang.detail',['barang'=>$barang]);
     }
     
-    
-  /**    public function userPosts()
-  *  {
-   *     $user = auth()->user();
-    *    if (!$user) {
-     *       return redirect('/login');
-      *  }
-    *
-     *   $posts = Barang::where('user_id', $user->id)->get();
-      *  return view('userPosts', compact('posts'));
-    *}
-*/
 
     public function __construct()
     {
@@ -117,8 +105,6 @@ class BarangController extends Controller
             return redirect()->route('barang.index')->with('success', 'Barang berhasil diupdate.');
         }
         
-    
-    
 
 
     /**
@@ -134,4 +120,17 @@ class BarangController extends Controller
         Storage::delete('gambar/'.$barang->gambar);
         return redirect()->route('barang.index')->with('success','Barang Berhasil dihapus.');
     }
+
+
+      /**    public function userPosts()
+  *  {
+   *     $user = auth()->user();
+    *    if (!$user) {
+     *       return redirect('/login');
+      *  }
+    *
+     *   $posts = Barang::where('user_id', $user->id)->get();
+      *  return view('userPosts', compact('posts'));
+    *}
+*/
 }

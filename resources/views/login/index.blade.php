@@ -61,6 +61,8 @@
                     <button type="submit" class="btn btn-primary btn-block mb-4">
                         Login 
                     </button>
+                    <p>Belum punya akun?<a href="/register">Daftar Di sini</a></p>
+                    
                     
                     <!-- Submit button -->
                     {{-- <a href="{{ route('login.create') }}"></a> --}}
