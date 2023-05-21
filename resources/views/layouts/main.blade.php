@@ -29,6 +29,9 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('barang.index') }}">Cari</a>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('login') }}">Login</a>
@@ -37,9 +40,6 @@
                 @auth
                     <li class="nav-item">
                         <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('barang.create') }}">Posting</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('barang.index') }}">Cari</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-opacity-50-hover link-dark"
