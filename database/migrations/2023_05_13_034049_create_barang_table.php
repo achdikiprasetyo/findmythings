@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('kategori');
             $table->date('tanggal');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
             
         });

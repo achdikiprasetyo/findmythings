@@ -6,9 +6,11 @@
             <a href="{{ route('barang.index') }}" class="btn btn-light mb-5">Kembali</a>
             @csrf
             @method('DELETE')
-            {{-- <input type="hidden" name="gambar" value="{{ $barang->gambar }}"> --}}
-            <button type="submit" class="btn btn-danger mb-3 float-end">Hapus</button>
-            <a href="{{ route('barang.edit', $barang->id_barang) }}" class="btn btn-primary mb-3 float-end mx-2">Edit</a>
+            @if (Gate::allows('edit-barang', $barang))
+                <button type="submit" class="btn btn-danger mb-3 float-end">Hapus</button>
+                <a href="{{ route('barang.edit', $barang->id_barang) }}" class="btn btn-primary mb-3 float-end mx-2">Edit</a>
+            @endif
+
         </form>
 
         <div class="row">

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Barang;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate ;
 
 class BarangController extends Controller
 {
@@ -30,14 +32,16 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        $userId = Auth::id();
         $namaGambar = uniqid().'.'.$request->file('gambar')->extension();
         $request->merge(['gambar' => $namaGambar]);
         $request->merge(['tanggal_post' => now()]);
         $request->file('gambar')->storeAs(
             'gambar', $namaGambar
         );
-
-        Barang::create($request->post());
+        $request_data = $request->post();
+        $request_data['user_id'] = $userId;
+        Barang::create($request_data);
         return redirect()->route('barang.index')->with('success','Barang berhasil ditambahkan.');
     }
 
@@ -62,6 +66,9 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $barang = Barang::find($id);
+        if (Gate::denies('edit-barang',$barang)) {
+            abort(403);
+        }
         return view('barang.edit', ['barang' => $barang]);
     }
     
@@ -122,15 +129,14 @@ class BarangController extends Controller
     }
 
 
-      /**    public function userPosts()
-  *  {
-   *     $user = auth()->user();
-    *    if (!$user) {
-     *       return redirect('/login');
-      *  }
-    *
-     *   $posts = Barang::where('user_id', $user->id)->get();
-      *  return view('userPosts', compact('posts'));
-    *}
-*/
+    public function userPost() {
+        $user = Auth::id();
+        // if (!$user) {
+        //     return redirect('/login');
+        // }
+    
+        $barang = Barang::where('user_id', $user)->get();
+        return view('barang.userPost',['barang' => $barang]);
+    }
+
 }

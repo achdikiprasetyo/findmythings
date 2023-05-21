@@ -21,6 +21,7 @@ class Barang extends Model
         'gambar',
         'kategori',
         'status',
-        'tanggal'
+        'tanggal',
+        'user_id'
         ];
 }
