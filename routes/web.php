@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,21 +23,17 @@ Route::get('/', function () {
 
 
 Route::get('/barang/user', [BarangController::class, 'userPost'])->name('barang.userPost');
-
+Route::get('/barang/search', [SearchController::class, 'index'])->name('search.index');
 Route::resource('/barang',BarangController::class);
 Route::middleware(['auth'])->group(function () {
+    
     Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
     Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
     Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
+    // Route::get('/barang/search', [SearchController::class, 'search'])->name('search');
     
 });
-
-
-
-
-
-
 
 
 Route::resource('/login', LoginController::class, );
