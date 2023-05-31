@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
@@ -44,3 +45,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'store'])->name('register.store');
 
+Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/laporan',[AdminController::class, 'laporan'])->name('admin.laporan');

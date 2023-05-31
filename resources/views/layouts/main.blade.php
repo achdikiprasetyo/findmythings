@@ -41,10 +41,18 @@
                     <li class="nav-item">
                         <a class="nav-link link-opacity-50-hover link-dark " href="{{ route('barang.create') }}">Posting</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-opacity-50-hover link-dark"
-                            href="{{ route('barang.userPost') }}">Postinganku</a>
-                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-50-hover link-dark" href="{{ route('admin.index') }}">Admin
+                                Panel</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link link-opacity-50-hover link-dark"
+                                href="{{ route('barang.userPost') }}">Postinganku</a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <form method="GET" action="{{ route('login.logout') }}">
                             @csrf

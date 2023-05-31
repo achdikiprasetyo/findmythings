@@ -14,7 +14,7 @@ class BarangPolicy
 
     public function edit(User $user,Barang $barang): bool
     {
-        return $user->id === $barang->user_id;
+        return $user->id === $barang->user_id || $user->role == 'admin';
     }
 
     // public function viewAny(User $user): bool
