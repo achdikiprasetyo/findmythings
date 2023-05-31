@@ -37,6 +37,7 @@
                             <div class="col my-3">
                                 <h3 class="bold">{{ $data->nama_barang }}</h3>
                                 <span class="badge text-bg-success mb-3">{{ $data->kategori }}</span>
+                                <p> {{ $data->lokasi }} | {{ $data->tanggal }}</p>
                                 <div class="deskripsi">{{ Str::limit($data->deskripsi, 100) }}</div>
                                 <a href="{{ route('barang.show', $data->id_barang) }}"
                                     class="btn btn-primary mt-3">Lihat</a>

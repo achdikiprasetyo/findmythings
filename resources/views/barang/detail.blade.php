@@ -40,6 +40,9 @@
                 </div>
             </div>
         </div>
+        @if (Gate::allows('edit-barang', $barang))
+        <a href="{{ route('laporan.create', $barang->id_barang) }}" class="btn btn-primary mb-3 float-end my-5">Lapor Pengembalian</a>
+    @endif
     @else
         <p>Barang tidak ditemukan.</p>
     @endif

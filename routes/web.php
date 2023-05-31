@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SearchController;
@@ -23,7 +24,7 @@ Route::get('/', function () {
 
 
 Route::get('/barang/user', [BarangController::class, 'userPost'])->name('barang.userPost');
-Route::get('/barang/search', [SearchController::class, 'index'])->name('search.index');
+Route::get('/barang/search', [SearchController::class, 'search'])->name('search.index');
 Route::resource('/barang',BarangController::class);
 Route::middleware(['auth'])->group(function () {
     
@@ -31,8 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
     Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
-    // Route::get('/barang/search', [SearchController::class, 'search'])->name('search');
-    
+    Route::get('laporan/{id}/create', [LaporanController::class, 'create'])->name('laporan.create');
+    Route::post('laporan/', [LaporanController::class, 'store'])->name('laporan.store');
 });
 
 
