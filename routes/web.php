@@ -27,12 +27,14 @@ Route::get('/', function () {
 Route::get('/barang/user', [BarangController::class, 'userPost'])->name('barang.userPost');
 Route::get('/barang/search', [SearchController::class, 'search'])->name('search.index');
 Route::resource('/barang',BarangController::class);
+
+
 Route::middleware(['auth'])->group(function () {
-    
-    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
-    Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
-    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
-    Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
+    Route::resource('barang', BarangController::class)->except(['create', 'store',]);
+    // Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    // Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    // Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+    // Route::get('/barang/{id}', [BarangController::class, 'show'])->name('barang.show');
     Route::get('laporan/{id}/create', [LaporanController::class, 'create'])->name('laporan.create');
     Route::post('laporan/', [LaporanController::class, 'store'])->name('laporan.store');
 });

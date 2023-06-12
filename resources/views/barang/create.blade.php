@@ -11,17 +11,17 @@
                     @csrf
                     <div class="form-group mb-3">
                         <label for="namaBarang" class="form-label">Nama Barang</label>
-                        <input type="text" class="form-control" name="nama_barang" id="namaBarang" placeholder="Nama Barang">
+                        <input type="text" class="form-control" name="nama_barang" id="namaBarang" placeholder="Nama Barang" required>
                     </div>
                     <div class="form-group mb-3">
                         <div class="row">
                             <div class="col-lg">
                                 <label for="tangal" class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
+                                <input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" required>
                             </div>
                             <div class="col-lg">
                                 <label for="lokasi" class="form-label">Lokasi</label>
-                                <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi">
+                                <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="Lokasi" required>
                             </div>
                         </div>   
                     </div>
@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-lg">
                                 <label for="kontak" class="form-label">Kontak</label>
-                                <input type="text" class="form-control" name="kontak" id="kontak" placeholder="Kontak">
+                                <input type="text" class="form-control" name="kontak" id="kontak" placeholder="Kontak" required>
                             </div>
                             <div class="col-lg">
                                 <label for="Kategori" class="form-label">Kategori</label>
@@ -42,14 +42,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" name="deskripsi" id="deskripsi" rows="4"></textarea>
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" rows="4" required></textarea>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="fileGambar" class="form-label">Input Gambar</label>
-                        <input class="form-control" type="file" name="gambar" id="fileGambar" accept="image/*" >
+                        {{-- Input Gambar --}}
+                        <input class="form-control" type="file" name="gambar" id="fileGambar" accept="image/*" required>
                     </div>
                     <input type="hidden" name="status" value="Hilang">
-                    {{-- <input type="hidden" name="tanggal_post" > --}}
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary mb-3">Sumbit</button>
                     </div>
